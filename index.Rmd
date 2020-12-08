@@ -35,6 +35,8 @@ These archaeological information could come from a large rank of proxies adresse
 
 # Postdoctoral perfil
 
+Data sharing with interactive web forms like RShiny, data vizualisation enriched charts with plotly
+
 ## Assess the patterns of cultural connectivity during the Final Jomon period and the extent by which this can predict the tempo and the mode of the spread of Yayoi cultural elements
 
 Cultural change, classic complementarity between adoption demic diffusion (DD) and cultural diffusion (CD)
@@ -117,7 +119,8 @@ see the [Leaflet app](https://zoometh.github.io/ecounter_postdoc/docs)
 ## Open science
 
 For example, the Web Ontology Language-Time (OWL-Time) Reprend le formalisme de Allen @Binding10
-
+For internet, JavaScritp (plotly) is the main language client-side, PHP server-side
+RDF, geojson (Leaflet), json_ld
 
 # Reference
 

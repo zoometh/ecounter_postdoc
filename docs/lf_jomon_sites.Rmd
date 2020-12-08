@@ -1,5 +1,5 @@
 ---
-title: "lf_jomon_sites"
+title: "Jomon archaeological sites"
 author: "T. Huet"
 date: "12/8/2020"
 output: html_document
@@ -7,7 +7,7 @@ output: html_document
 
 A Leaflet map of Jomon sites  with  Rmarkdown. Data comes from the [sites.csv file of the ***Jomon_SPD_Comparison***](https://github.com/ercrema/Jomon_SPD_Comparison/blob/master/data/sites.csv) GitHub repo. 
 
-```{r jomon_sites, warning=F}
+```{r jomon_sites, warning=F, fig.align='center'}
 library(curl)
 library(leaflet)
 suppressMessages(library(dplyr))
@@ -16,15 +16,18 @@ library(htmlwidgets)
 gh.sites.repo <- "https://raw.github.com/ercrema/Jomon_SPD_Comparison/"
 gh.sites <- "master/data/sites.csv"
 gh.data.sites <- read.csv(curl(paste0(gh.sites.repo, gh.sites)))
-jomon.sites <- leaflet(gh.data.sites, height = "1000px", width = "75%") %>%
+gh.data.sites$lbl <- paste0(as.character(gh.data.sites$SiteID), ".", gh.data.sites$SiteName,
+                                              "<br><i>", gh.data.sites$Prefecture, "</i>")
+jomon.sites <- leaflet(gh.data.sites, height = "800px", width = "75%") %>%
   addTiles(group = "OSM") %>%
+  addProviderTiles(providers$Esri.WorldImagery, group='Topo') %>%
   addCircleMarkers(layerId = ~SiteName,
                    lng = ~Longitude, lat = ~Latitude,
-                   popup = paste0(~SiteId,".", ~SiteName, "<br><i>", ~Prefecture,"</i>"),
+                   popup = ~lbl,
                    weight = 1,
                    radius = 3,
                    clusterOptions = markerClusterOptions(showCoverageOnHover = T,
-                                                         zoomToBoundsOnClick = T))
-# saveWidget(jomon.sites, file = "lf_jomon_sites.html")
+                                                         zoomToBoundsOnClick = T)) %>%
+  addControl("Jomon archaeological sites", position = "topright")
+jomon.sites
 ```
-
