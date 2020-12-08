@@ -1,0 +1,30 @@
+---
+title: "lf_jomon_sites"
+author: "T. Huet"
+date: "12/8/2020"
+output: html_document
+---
+
+A Leaflet map of Jomon sites  with  Rmarkdown. Data comes from the [sites.csv file of the ***Jomon_SPD_Comparison***](https://github.com/ercrema/Jomon_SPD_Comparison/blob/master/data/sites.csv) GitHub repo. 
+
+```{r jomon_sites, warning=F}
+library(curl)
+library(leaflet)
+suppressMessages(library(dplyr))
+library(htmlwidgets)
+
+gh.sites.repo <- "https://raw.github.com/ercrema/Jomon_SPD_Comparison/"
+gh.sites <- "master/data/sites.csv"
+gh.data.sites <- read.csv(curl(paste0(gh.sites.repo, gh.sites)))
+jomon.sites <- leaflet(gh.data.sites, height = "1000px", width = "75%") %>%
+  addTiles(group = "OSM") %>%
+  addCircleMarkers(layerId = ~SiteName,
+                   lng = ~Longitude, lat = ~Latitude,
+                   popup = paste0(~SiteId,".", ~SiteName, "<br><i>", ~Prefecture,"</i>"),
+                   weight = 1,
+                   radius = 3,
+                   clusterOptions = markerClusterOptions(showCoverageOnHover = T,
+                                                         zoomToBoundsOnClick = T))
+# saveWidget(jomon.sites, file = "lf_jomon_sites.html")
+```
+

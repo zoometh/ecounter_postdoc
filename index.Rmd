@@ -1,0 +1,125 @@
+---
+title: "Encounter postdoc cover letter"
+author: "T. Huet"
+date: "12/8/2020"
+output: pdf_document
+bibliography: bibliography.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(kableExtra)
+```
+
+The University of Cambridge offers a fixed-term postdoctoral position, in the frame of the [ERC-funded research project ENOUNTER](https://www.encounterproject.info/) (PI: [Enrico Crema](https://orcid.org/0000-0001-6727-5138)), for the data integration, geostastical and temporal analysis, data management and publishing of J\={o}mon-Yaoi transition.
+
+# Research context
+
+J\={o}mon period (16,000–2,800 cal BP)(@habu2004ancient) is the most famous counter-example of farming economy adoption by a a society having hunter-gather economy. Indeed, while the surroundings of the island have all adopted farming economy, the J\={o}mons maintained a subsistence based on sailing, gathering and hunting. J\={o}mons used a part of the Western Eurasia so-called Neolithic \emph{package}: sedentary settlements (pit-dwellings), storage structures, and pottery. The agriculture was introduced during the Yaoi (ca. 950 - period parallely to demic and a cultural diffusion process. Including rice and millet agriculture. Question Jomon-Yayoi transition. The duration of J\={o}mon period at least three cycles of population [@kobayashi2008jomon]. To assess the dynamic, time and space must be cover-up with heteroclite  data (eg,  ) with quantitative analysis.
+
+```{r wp, echo=FALSE, results='asis'}
+wp.df <- data.frame(work.package = c("WP1", "WP2", "WP3", "WP4", "WP5", "WP6"),
+                   thm.package = c("population dynamics", 
+                                   "analyse organic residues", 
+                                   "spatial extent of different cultural traditions",
+                                   "modelling landcover changes",
+                                   "spatial diffusion of rice, broomcorn millet and foxtail millet",
+                                   "data integration"),
+                   stringsAsFactors = F)
+kable(wp.df, "latex", row.names = F) %>%
+  kable_styling(full_width = FALSE, position = "center", font_size = 8)
+```
+
+These archaeological information could come from a large rank of proxies adressed by the members of the ERC and key collaborators: radiocarbon chronicles and typo-chronology of pottery (@crema2020multi), juvenility index from skeletal data (WP1), analyse organic residues MANON BONDETTI OLIVER CRAIG (WP2), modelling landcover changes LEAH BRAINERD (WP4)
+
+# Postdoctoral perfil
+
+## Assess the patterns of cultural connectivity during the Final Jomon period and the extent by which this can predict the tempo and the mode of the spread of Yayoi cultural elements
+
+Cultural change, classic complementarity between adoption demic diffusion (DD) and cultural diffusion (CD)
+
+I have already worked with such models 
+
+### Mapping cultures extents
+
+Pottery is often used to trace cultural patterns ethnographical insights @Dietler98 
+
+### Environment
+
+Landcover and climate The Kopper-Geigen climates. Map algebra crossing edaphic condition, solar radiation, rain falls, etc. 
+
+## determine patterns of cultural trait co-occurrence during the Yayoi period in relation to the dynamics of crop dispersal
+
+## IT management
+
+The candidate will have to manage \sf{R} programming, GitHub repository
+
+### \sf{R} programming
+
+\sf{R} programming offer an open source and multi-paradigm programm. The numerous package of R permit, among other things to deal with [radiocarbon datings](#c14), [spatial data](#spat), [temporal logic](#temporal)
+
+## Temporal settings
+
+Granularity of temporal dynamics is a clue element of archaeological reasonment. J\={o}mon period offer a robust ceramic-based chrono-typological sequence that have been correlate to absolute datins (@crema2020multi). 
+
+#### radiocarbon datings {#c14}
+
+summed probability distribution of radiocarbon dates (SPDR)
+\sf{R} packages rcarbon, Bchron, etc. allow to calibrate radiocarbon dates. For example, the c14dates.csv file of the GitHub [***jomonPhasesAndPopulation*** repo](https://github.com/ercrema/jomonPhasesAndPopulation) host near 2,000 radiocarbon dates (@crema2020multi). \sf{R} can connect the repo and calibrate the dates
+
+```{r dat, fig.height = 8}
+library(curl) # to connect url
+library(rcarbon) # for C14 calibrations
+# get C14 data
+gh.c14.repo <- "https://raw.github.com/ercrema/jomonPhasesAndPopulation/"
+gh.c14 <- "master/data/c14dates.csv"
+gh.data.c14 <- read.csv(curl(paste0(gh.c14.repo, gh.c14)))
+# 10 first dates
+gh.data.c14.sample <- head(gh.data.c14, 10)
+gh.data.c14.sample$ids <- 1:nrow(gh.data.c14.sample)
+ages <- calibrate(x = gh.data.c14.sample$CRA,
+                  errors = gh.data.c14.sample$Error,
+                  calCurves = 'intcal13',
+                  ids = gh.data.c14.sample$LabCode,
+                  verbose = F)
+multiplot(ages, decreasing=TRUE, HPD=TRUE)
+
+```
+
+I have already used
+
+#### Bayesian modeling
+
+A priori assertion on the relative chronology can be done to accurate the SPD and manage the uncertainity of chronological events
+
+
+####  Aoristic analysis {#temporal}
+
+
+\sf{R} packages [aoristic](https://cran.r-project.org/web/packages/aoristic/index.html) permit to deal with time series in a 
+
+In the frame of the OH-FET project, I have manage temporal conceptual Allen to quantify the urban dynamics of medieval times (@Saligny14). In such a modeling, *events* are considered as POINTS when *duration* as considered as LINES with a starting *event* (x-) and an ending *event* (x+). Durations and events can be manage with binary topological relationships (*birel*) and operators like touches/meets, overlaps/intersects, etc.
+
+
+
+
+#### Spatial data {#spat}
+
+\sf{R} packages st, sp, rgdal, etc. and Leaflet. Leaflet permits the use of basemaps, 
+
+
+see the [Leaflet app](https://zoometh.github.io/ecounter_postdoc/docs)
+
+
+## Scientific publications
+
+## Open science
+
+For example, the Web Ontology Language-Time (OWL-Time) Reprend le formalisme de Allen @Binding10
+
+
+# Reference
+
+
+

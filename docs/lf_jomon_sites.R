@@ -10,7 +10,7 @@ jomon.sites <- leaflet(gh.data.sites, height = "500px", width = "75%") %>%
   addTiles(group = "OSM") %>%
   addCircleMarkers(layerId = ~SiteName,
                    lng = ~Longitude, lat = ~Latitude,
-                   popup = ~SiteName,
+                   popup = ~paste0(SiteId,".", SiteName, "<br><i>", Prefecture,"<\i>")
                    weight = 1,
                    radius = 3,
                    clusterOptions = markerClusterOptions(showCoverageOnHover = T,
