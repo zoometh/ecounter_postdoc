@@ -67,7 +67,7 @@ Landcover and climate The Kopper-Geigen climates. Map algebra crossing edaphic c
 
 ## IT management
 
-The candidate will have to manage \textsf{R} programming, GitHub repository
+The candidate will have to manage \textsf{R} programming, GitHub and Zenodo repositories
 
 ### \textsf{R} programming
 
@@ -137,6 +137,7 @@ RDF, geojson (Leaflet), json_ld
 # Candidate perfil
 
 I have already worked on HG to EF transition in the frame of the *CIMO* french ANR, and today with the NeoNeot work group. Even Jomon-Yaoi context differs from Western Asian transition between HG and EF, concepts of acculturation, 
+Monte-Carlo simulation used in MCMC used for radiocarbone SPD are also use in the K-Ripley point pattern test
 
 # Reference
 
