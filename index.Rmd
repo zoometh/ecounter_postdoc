@@ -28,12 +28,24 @@ wp.df <- data.frame(work.package = c("WP1", "WP2", "WP3", "WP4", "WP5", "WP6"),
                                    "data integration"),
                    stringsAsFactors = F)
 kable(wp.df, "latex", row.names = F) %>%
-  kable_styling(full_width = FALSE, position = "center", font_size = 8)
+  kable_styling(full_width = FALSE, position = "center", font_size = 9)
 ```
 
 These archaeological information could come from a large rank of proxies adressed by the members of the ERC and key collaborators: radiocarbon chronicles and typo-chronology of pottery (@crema2020multi), juvenility index from skeletal data (WP1), analyse organic residues MANON BONDETTI OLIVER CRAIG (WP2), modelling landcover changes LEAH BRAINERD (WP4)
 
+subsistence-settlement, mortuary/ceremonial practices and crafts/trade
+
+conditions, causes and consequences of cultural change
+long-term cultural change
+
+multiple lines of evidence
+
+cultural traits dynamically redistributed through time (over 10,000 years) and space (all along the Japan archipel)
+
+polythetic analysis
+
 # Postdoctoral perfil
+
 
 Data sharing with interactive web forms like RShiny, data vizualisation enriched charts with plotly
 
@@ -55,11 +67,12 @@ Landcover and climate The Kopper-Geigen climates. Map algebra crossing edaphic c
 
 ## IT management
 
-The candidate will have to manage \sf{R} programming, GitHub repository
+The candidate will have to manage \textsf{R} programming, GitHub repository
 
-### \sf{R} programming
+### \textsf{R} programming
 
-\sf{R} programming offer an open source and multi-paradigm programm. The numerous package of R permit, among other things to deal with [radiocarbon datings](#c14), [spatial data](#spat), [temporal logic](#temporal)
+\textsf{R} programming offer an open source and multi-paradigm programm. The numerous package of R permit, among other things to deal with [radiocarbon datings](#c14), [spatial data](#spat), [temporal logic](#temporal)
+
 
 ## Temporal settings
 
@@ -68,17 +81,16 @@ Granularity of temporal dynamics is a clue element of archaeological reasonment.
 #### radiocarbon datings {#c14}
 
 summed probability distribution of radiocarbon dates (SPDR)
-\sf{R} packages rcarbon, Bchron, etc. allow to calibrate radiocarbon dates. For example, the c14dates.csv file of the GitHub [***jomonPhasesAndPopulation*** repo](https://github.com/ercrema/jomonPhasesAndPopulation) host near 2,000 radiocarbon dates (@crema2020multi). \sf{R} can connect the repo and calibrate the dates
+\textsf{R} packages rcarbon @Bevan20, Bchron, etc. allow to calibrate radiocarbon dates. For example, the c14dates.csv file of the GitHub [***jomonPhasesAndPopulation*** repo](https://github.com/ercrema/jomonPhasesAndPopulation) host near 2,000 radiocarbon dates (@crema2020multi). \textsf{R} can connect the repo and calibrate the dates
 
-```{r dat, fig.height = 8}
+```{r dat, fig.height = 5, warning= F}
 library(curl) # to connect url
 library(rcarbon) # for C14 calibrations
 # get C14 data
 gh.c14.repo <- "https://raw.github.com/ercrema/jomonPhasesAndPopulation/"
 gh.c14 <- "master/data/c14dates.csv"
 gh.data.c14 <- read.csv(curl(paste0(gh.c14.repo, gh.c14)))
-# 10 first dates
-gh.data.c14.sample <- head(gh.data.c14, 10)
+gh.data.c14.sample <- head(gh.data.c14) # first dates
 gh.data.c14.sample$ids <- 1:nrow(gh.data.c14.sample)
 ages <- calibrate(x = gh.data.c14.sample$CRA,
                   errors = gh.data.c14.sample$Error,
@@ -99,7 +111,7 @@ A priori assertion on the relative chronology can be done to accurate the SPD an
 ####  Aoristic analysis {#temporal}
 
 
-\sf{R} packages [aoristic](https://cran.r-project.org/web/packages/aoristic/index.html) permit to deal with time series in a 
+\textsf{R} packages [aoristic](https://cran.r-project.org/web/packages/aoristic/index.html) permit to deal with time series in a 
 
 In the frame of the OH-FET project, I have manage temporal conceptual Allen to quantify the urban dynamics of medieval times (@Saligny14). In such a modeling, *events* are considered as POINTS when *duration* as considered as LINES with a starting *event* (x-) and an ending *event* (x+). Durations and events can be manage with binary topological relationships (*birel*) and operators like touches/meets, overlaps/intersects, etc.
 
@@ -108,7 +120,7 @@ In the frame of the OH-FET project, I have manage temporal conceptual Allen to q
 
 #### Spatial data {#spat}
 
-\sf{R} packages st, sp, rgdal, etc. and Leaflet. Leaflet permits the use of basemaps, 
+\textsf{R} packages st, sp, rgdal, etc. and Leaflet. Leaflet permits the use of basemaps, 
 
 
 see the [Leaflet app](https://zoometh.github.io/ecounter_postdoc/docs)
@@ -121,6 +133,10 @@ see the [Leaflet app](https://zoometh.github.io/ecounter_postdoc/docs)
 For example, the Web Ontology Language-Time (OWL-Time) Reprend le formalisme de Allen @Binding10
 For internet, JavaScritp (plotly) is the main language client-side, PHP server-side
 RDF, geojson (Leaflet), json_ld
+
+# Candidate perfil
+
+I have already worked on HG to EF transition in the frame of the *CIMO* french ANR, and today with the NeoNeot work group. Even Jomon-Yaoi context differs from Western Asian transition between HG and EF, concepts of acculturation, 
 
 # Reference
 

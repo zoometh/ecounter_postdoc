@@ -1,33 +1,48 @@
 ---
-title: "Jomon archaeological sites"
+title: "lf_jomon_sites"
 author: "T. Huet"
-date: "12/8/2020"
 output: html_document
 ---
 
-A Leaflet map of Jomon sites  with  Rmarkdown. Data comes from the [sites.csv file of the ***Jomon_SPD_Comparison***](https://github.com/ercrema/Jomon_SPD_Comparison/blob/master/data/sites.csv) GitHub repo. 
+A Leaflet map of Jomon sites  with  Rmarkdown. Data comes from the [**Jomon_SPD_Comparison**](https://github.com/ercrema/Jomon_SPD_Comparison/) GitHub repository 
 
 ```{r jomon_sites, warning=F, fig.align='center'}
 library(curl)
 library(leaflet)
 suppressMessages(library(dplyr))
-library(htmlwidgets)
+library(htmltools)
 
 gh.sites.repo <- "https://raw.github.com/ercrema/Jomon_SPD_Comparison/"
 gh.sites <- "master/data/sites.csv"
-gh.data.sites <- read.csv(curl(paste0(gh.sites.repo, gh.sites)))
-gh.data.sites$lbl <- paste0(as.character(gh.data.sites$SiteID), ".", gh.data.sites$SiteName,
-                                              "<br><i>", gh.data.sites$Prefecture, "</i>")
-jomon.sites <- leaflet(gh.data.sites, height = "800px", width = "75%") %>%
+gh.c14 <- "master/data/c14dates.csv"
+gh.data.sites <- read.csv(curl(paste0(gh.sites.repo, gh.sites))) # sites
+gh.data.c14 <- read.csv(curl(paste0(gh.sites.repo, gh.c14))) # dates
+# merge to have c14 location
+gh.data <- merge(gh.data.c14, gh.data.sites, by="SiteID", all.x = T)
+gh.data$lbl <- paste0("<b>s</b> ", as.character(gh.data$SiteID), ". ", gh.data$SiteName, 
+                      " <i>", gh.data$Prefecture, "</i><br>",
+                      "<b>c</b> ", gh.data$C14ID, ". ")
+gh.data$txt <- paste0(gh.data$lbl, gh.data$C14Age, " +/- ",  
+                      gh.data$C14Error, " BP <br> [", gh.data$LabCode, "]")
+tit <- HTML(paste0('<a href=', shQuote("https://github.com/ercrema/Jomon_SPD_Comparison"),
+                   "\ target=\"_blank\"",'> Jomon sites (<b>s</b>) and C14 (<b>c</b>) </a> '))
+jomon.sites <- leaflet(gh.data, height = "800px") %>%
   addTiles(group = "OSM") %>%
   addProviderTiles(providers$Esri.WorldImagery, group='Topo') %>%
-  addCircleMarkers(layerId = ~SiteName,
+  addCircleMarkers(layerId = ~LabCode,
                    lng = ~Longitude, lat = ~Latitude,
-                   popup = ~lbl,
+                   label = ~lapply(lbl, htmltools::HTML),
+                   popup = ~txt,
                    weight = 1,
                    radius = 3,
+                   opacity = 0.7,
+                   fillOpacity = 0.7,
                    clusterOptions = markerClusterOptions(showCoverageOnHover = T,
-                                                         zoomToBoundsOnClick = T)) %>%
-  addControl("Jomon archaeological sites", position = "topright")
+                                                         zoomToBoundsOnClick = T),
+                   options = markerOptions(riseOnHover = TRUE)) %>%
+  addLayersControl(
+    baseGroups = c('OSM', 'Topo')) %>%
+  addScaleBar(position = "bottomleft") %>%
+  addControl(tit, position = "topleft")
 jomon.sites
 ```
