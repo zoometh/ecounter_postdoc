@@ -1,8 +1,19 @@
 ---
-title: "Encounter postdoc cover letter"
-author: "T. Huet"
+title: "JC24533 postdoc position"
+subtitle: "cover letter"
+author: |
+  | Thomas Huet 
+  | mail: <thomashuet7@gmail.com>
+  | website: <https://github.com/zoometh/>
 date: "12/8/2020"
-output: pdf_document
+output: 
+  pdf_document:
+    keep_tex: true
+    includes:
+      in_header: preamble.tex
+# header-includes:
+  # - \hypersetup{colorlinks = false, pdfborder={1 1 1}}
+  # - \newcommand{\pkg}[1]{{\fontseries{m}\fontseries{b}\selectfont #1}}
 bibliography: bibliography.bib
 ---
 
@@ -12,132 +23,42 @@ library(knitr)
 library(kableExtra)
 ```
 
-The University of Cambridge offers a fixed-term postdoctoral position, in the frame of the [ERC-funded research project ENOUNTER](https://www.encounterproject.info/) (PI: [Enrico Crema](https://orcid.org/0000-0001-6727-5138)), for the data integration, geostastical and temporal analysis, data management and publishing of J\={o}mon-Yaoi transition.
+The University of Cambridge opens a fixed-term postdoctoral position, in the framework of the [ERC-funded research project ENCOUNTER](https://www.encounterproject.info/) (PI: Enrico Crema), to assess **cultural boundaries**, **cultural connectivity** and **cultural changes** during the Jōmon-Yayoi transition period.  
+ 
+During more than 10,000 years, Jōmon (16,000–2,800 cal BP) maintain a hunter-gather economy, while the surroundings of the island adopted progressively farming economy [@habu2004ancient]. During the Late Jōmon and Final Jōmon phases (4,420-2,800 cal BP), Southern Yayoi farmers introduced rice and millet to the Japan archipel. The ENCOUNTER project plan to respond to this main question: triggered by the Yayoi demic and cultural-trait diffusion, how the Jōmon culture changes ? To adress this question, multiple lines of evidence coming from Japanese excavation reports (radiocarbon dates, subsistence systems, residiential models, mortuary/ceremonial practices, crafts/trade networks, etc.) and new studies conducted by the project members and key collaborators (organic residues analyses, climatic and landcover restitution, etc.) will be analysed over the **long-term** and at a **large geographical scale** with computational methods.
 
-# Research context
+I am familiar with computational archaeology and computer-based analysis to study archaeological traits over the **long-term** and at a **large geographical scale**. I am used to conduct archaeological researches with formal methods. For example, **cultural boundaries** can be defined as the spatial extent where cultural traits share more between them (intra-variability) than with cultural traits outside this extent (inter-variability). These cultural traits come from different social subsystems (subsistence, technological, demographic, ecological, symbolic) that should be assessed with polythetic/multifactorial analysis and computational methods with descriptive statistics, data mining and statistical test at the temporal and spatial scales. I assume that **cultural connectivity** and **cultural change** should be model with the same statistical means. 
 
-J\={o}mon period (16,000–2,800 cal BP)(@habu2004ancient) is the most famous counter-example of farming economy adoption by a a society having hunter-gather economy. Indeed, while the surroundings of the island have all adopted farming economy, the J\={o}mons maintained a subsistence based on sailing, gathering and hunting. J\={o}mons used a part of the Western Eurasia so-called Neolithic \emph{package}: sedentary settlements (pit-dwellings), storage structures, and pottery. The agriculture was introduced during the Yaoi (ca. 950 - period parallely to demic and a cultural diffusion process. Including rice and millet agriculture. Question Jomon-Yayoi transition. The duration of J\={o}mon period at least three cycles of population [@kobayashi2008jomon]. To assess the dynamic, time and space must be cover-up with heteroclite  data (eg,  ) with quantitative analysis.
+Regarding the **spatial dimension**, data coming from organic residue analysis (WP2), land cover restitution (WP4) and archaeobotanical (WP5) will be processed with map algebra to contrast Jōmo regional responses to the Yayoi economic spreading. I am used to manage spatial analysis such as: sitology, site catchment analysis, shorter paths, inter-visibilities, etc., and to deal with spatial auto-correlation, point pattern analysis, etc. Regarding the **temporal dimension**, it is hard to consider the whole Jōmon period as a unitary culture since, at least, three cycles of population have been percieved [@kobayashi2008jomon]. A great insight will be to parallelized radiocarbon dates summed probability distribution (SPD) with the Jomon well-documented pottery typo-chronology and other cultural-traits [@Habu08; @crema2020multi]. I am familiar with SPDs (see for example the RShiny [EUROEVOL_R app](https://neolithic.shinyapps.io/Euroevol_R/)) and cultural-traits seriations (ie typo-chronology). I am also used to manage interval temporal logic, like Allen's formalism, with computer-based methods. In such a modeling, *events* are considered as `POINTS` when *duration* as considered as `LINES` with a starting *event* (x^-^) and an ending *event* (x^+^). Durations and events can be manage with binary topological relationships (*birel*) and operators like touches/meets, overlaps/intersects, etc.   
 
-```{r wp, echo=FALSE, results='asis'}
-wp.df <- data.frame(work.package = c("WP1", "WP2", "WP3", "WP4", "WP5", "WP6"),
-                   thm.package = c("population dynamics", 
-                                   "analyse organic residues", 
-                                   "spatial extent of different cultural traditions",
-                                   "modelling landcover changes",
-                                   "spatial diffusion of rice, broomcorn millet and foxtail millet",
-                                   "data integration"),
-                   stringsAsFactors = F)
-kable(wp.df, "latex", row.names = F) %>%
-  kable_styling(full_width = FALSE, position = "center", font_size = 9)
-```
+I mostly use methods like database/GIS and programmed routines of spatial and non-spatial statistical analysis with \textsf{R}. I also manage networks analysis either for spatial and non-spatial data. In a context of Open Science, open data, and Digital Humanities, I also manage content management system (CMS), GeoCMS, data sharing, data vizualisation with enriched charts and web interactive forms (see the [Golasecca-net webpage](https://zoometh.github.io/golasecca/) for spatial and non-spatial networks, and JSON\_LD serialization). 
 
-These archaeological information could come from a large rank of proxies adressed by the members of the ERC and key collaborators: radiocarbon chronicles and typo-chronology of pottery (@crema2020multi), juvenility index from skeletal data (WP1), analyse organic residues MANON BONDETTI OLIVER CRAIG (WP2), modelling landcover changes LEAH BRAINERD (WP4)
-
-subsistence-settlement, mortuary/ceremonial practices and crafts/trade
-
-conditions, causes and consequences of cultural change
-long-term cultural change
-
-multiple lines of evidence
-
-cultural traits dynamically redistributed through time (over 10,000 years) and space (all along the Japan archipel)
-
-polythetic analysis
-
-# Postdoctoral perfil
-
-
-Data sharing with interactive web forms like RShiny, data vizualisation enriched charts with plotly
-
-## Assess the patterns of cultural connectivity during the Final Jomon period and the extent by which this can predict the tempo and the mode of the spread of Yayoi cultural elements
-
-Cultural change, classic complementarity between adoption demic diffusion (DD) and cultural diffusion (CD)
-
-I have already worked with such models 
-
-### Mapping cultures extents
-
-Pottery is often used to trace cultural patterns ethnographical insights @Dietler98 
-
-### Environment
-
-Landcover and climate The Kopper-Geigen climates. Map algebra crossing edaphic condition, solar radiation, rain falls, etc. 
-
-## determine patterns of cultural trait co-occurrence during the Yayoi period in relation to the dynamics of crop dispersal
-
-## IT management
-
-The candidate will have to manage \textsf{R} programming, GitHub and Zenodo repositories
-
-### \textsf{R} programming
-
-\textsf{R} programming offer an open source and multi-paradigm programm. The numerous package of R permit, among other things to deal with [radiocarbon datings](#c14), [spatial data](#spat), [temporal logic](#temporal)
-
-
-## Temporal settings
-
-Granularity of temporal dynamics is a clue element of archaeological reasonment. J\={o}mon period offer a robust ceramic-based chrono-typological sequence that have been correlate to absolute datins (@crema2020multi). 
-
-#### radiocarbon datings {#c14}
-
-summed probability distribution of radiocarbon dates (SPDR)
-\textsf{R} packages rcarbon @Bevan20, Bchron, etc. allow to calibrate radiocarbon dates. For example, the c14dates.csv file of the GitHub [***jomonPhasesAndPopulation*** repo](https://github.com/ercrema/jomonPhasesAndPopulation) host near 2,000 radiocarbon dates (@crema2020multi). \textsf{R} can connect the repo and calibrate the dates
-
-```{r dat, fig.height = 5, warning= F}
+I am also able to find, access, interoperate and reuse (FAIR) data, like those published as supplementary material and hosted on the GitHub [***Jomon_SPD_Comparison*** repository](https://github.com/ercrema/jomonPhasesAndPopulation), with near 2,000 radiocarbon dates [@crema2020multi] can be connected, read, calibrated and plotted with \textsf{R} and the packages \pkg{curl} and \pkg{rcarbon} [@Ooms19; @Bevan20]  
+&nbsp;
+  
+```{r dat, fig.height = 4, warning= F}
 library(curl) # to connect url
 library(rcarbon) # for C14 calibrations
-# get C14 data
-gh.c14.repo <- "https://raw.github.com/ercrema/jomonPhasesAndPopulation/"
+gh.repo <- "https://raw.github.com/ercrema/Jomon_SPD_Comparison/"
 gh.c14 <- "master/data/c14dates.csv"
-gh.data.c14 <- read.csv(curl(paste0(gh.c14.repo, gh.c14)))
+gh.data.c14 <- read.csv(curl(paste0(gh.repo, gh.c14)))
 gh.data.c14.sample <- head(gh.data.c14) # first dates
 gh.data.c14.sample$ids <- 1:nrow(gh.data.c14.sample)
-ages <- calibrate(x = gh.data.c14.sample$CRA,
-                  errors = gh.data.c14.sample$Error,
+ages <- calibrate(x = gh.data.c14.sample$C14Age,
+                  errors = gh.data.c14.sample$C14Error,
                   calCurves = 'intcal13',
                   ids = gh.data.c14.sample$LabCode,
                   verbose = F)
 multiplot(ages, decreasing=TRUE, HPD=TRUE)
-
 ```
 
-I have already used
+The geographical counterpart of this radiocarbon dates plot -- with the whole dataset --, made with \textsf{R} and the pakages \pkg{leaflet}, \pkg{htmltools}, \pkg{dplyr} and \pkg{curl}, can be seen on a [GitHub webpage](https://zoometh.github.io/encounter_postdoc/docs/lf_jomon_sites.html).
 
-#### Bayesian modeling
+## Last Words
 
-A priori assertion on the relative chronology can be done to accurate the SPD and manage the uncertainity of chronological events
-
-
-####  Aoristic analysis {#temporal}
-
-
-\textsf{R} packages [aoristic](https://cran.r-project.org/web/packages/aoristic/index.html) permit to deal with time series in a 
-
-In the frame of the OH-FET project, I have manage temporal conceptual Allen to quantify the urban dynamics of medieval times (@Saligny14). In such a modeling, *events* are considered as POINTS when *duration* as considered as LINES with a starting *event* (x-) and an ending *event* (x+). Durations and events can be manage with binary topological relationships (*birel*) and operators like touches/meets, overlaps/intersects, etc.
-
-
-
-
-#### Spatial data {#spat}
-
-\textsf{R} packages st, sp, rgdal, etc. and Leaflet. Leaflet permits the use of basemaps, 
-
-
-see the [Leaflet app](https://zoometh.github.io/ecounter_postdoc/docs)
-
-
-## Scientific publications
-
-## Open science
-
-For example, the Web Ontology Language-Time (OWL-Time) Reprend le formalisme de Allen @Binding10
-For internet, JavaScritp (plotly) is the main language client-side, PHP server-side
-RDF, geojson (Leaflet), json_ld
-
-# Candidate perfil
-
-I have already worked on HG to EF transition in the frame of the *CIMO* french ANR, and today with the NeoNeot work group. Even Jomon-Yaoi context differs from Western Asian transition between HG and EF, concepts of acculturation, 
-Monte-Carlo simulation used in MCMC used for radiocarbone SPD are also use in the K-Ripley point pattern test
+Archaeological researches over the long-term and at a large scale, like the ENCOUNTER project, integrate large amount of heteroclit data into computational routines. I am used to manage and analyse data with \textsf{R}, GIS and databases, to develop authoring frameworks for data science like RShiny or Rmarkdown documents, Mardown and \LaTeX syntaxes. In a context of Open Science, I also know how to manage open data referencing and online sourcing/publishing.
+Regarding the archaeological context -- even I am not familiar with the Japanese prehistory -- I have already an experience on studying acculturation processes like for the Mesolithic-Neolithic transition or the end of the Protohistory in Western Europe. 
+Working on the Jōmon-Yayoi transition will allow me to *de-focuse* my current perception of farming/innovation adoption. It would be a great experience for me to developp IT and scientific solutions within the frame of the ENCOUNTER research project and join a team open to innovative methods.
 
 # Reference
 
